@@ -43,7 +43,7 @@ const contactForm = document.getElementById("form-contato");
 
 if (contactForm) {
   contactForm.addEventListener("submit", function (e) {
-    e.preventDefault();
+    e.preventDefault(); // Impede o recarregamento da página atual
 
     // Captura os dados inseridos
     const nome = document.getElementById("nome").value;
@@ -53,21 +53,22 @@ if (contactForm) {
     const btn = this.querySelector("button");
     const originalText = btn.innerText;
 
-    // Efeito visual imediato
+    // Efeito visual imediato no botão
     btn.innerText = "Redirecionando...";
     btn.style.boxShadow = "0 0 25px var(--neon-green)";
 
-    // Monta o texto e codifica com segurança (evita quebra de link)
+    // Monta o texto e codifica com segurança
     const textoOriginal = `Olá, Ronaldo! Vim pelo seu portfólio web.\n\n*Nome:* ${nome}\n*E-mail:* ${email}\n*Mensagem:* ${mensagem}`;
     const textoWhatsApp = encodeURIComponent(textoOriginal);
     
     const numeroWhatsApp = "5584987342322";
     const url = `https://api.whatsapp.com/send?phone=${numeroWhatsApp}&text=${textoWhatsApp}`;
 
-    // ABRE O WHATSAPP IMEDIATAMENTE (Fora do setTimeout para não ser bloqueado pelo celular)
-    window.location.href = url;
+    // A MÁGICA AQUI: Abre a nova aba IMEDIATAMENTE após o clique
+    // Por estar fora do setTimeout, o celular permite abrir a nova aba tranquilamente
+    window.open(url, "_blank");
 
-    // O setTimeout agora serve APENAS para limpar o visual do botão depois de 1 segundo
+    // O setTimeout de 1 segundo agora só tem a função de limpar os campos da sua página original
     setTimeout(() => {
       contactForm.reset();
       btn.innerText = originalText;
