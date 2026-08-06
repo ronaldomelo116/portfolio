@@ -53,23 +53,25 @@ if (contactForm) {
     const btn = this.querySelector("button");
     const originalText = btn.innerText;
 
-    // Efeito visual
+    // Efeito visual imediato
     btn.innerText = "Redirecionando...";
     btn.style.boxShadow = "0 0 25px var(--neon-green)";
 
-    // Monta o texto formatado para o WhatsApp
-    const textoWhatsApp = `Olá, Ronaldo! Vim pelo seu portfólio web.%0A%0A*Nome:* ${nome}%0A*E-mail:* ${email}%0A*Mensagem:* ${mensagem}`;
+    // Monta o texto e codifica com segurança (evita quebra de link)
+    const textoOriginal = `Olá, Ronaldo! Vim pelo seu portfólio web.\n\n*Nome:* ${nome}\n*E-mail:* ${email}\n*Mensagem:* ${mensagem}`;
+    const textoWhatsApp = encodeURIComponent(textoOriginal);
+    
     const numeroWhatsApp = "5584987342322";
     const url = `https://api.whatsapp.com/send?phone=${numeroWhatsApp}&text=${textoWhatsApp}`;
 
-    setTimeout(() => {
-      // Abre a janela do WhatsApp
-      window.open(url, "_blank");
-      contactForm.reset();
+    // ABRE O WHATSAPP IMEDIATAMENTE (Fora do setTimeout para não ser bloqueado pelo celular)
+    window.location.href = url;
 
-      // Restaura o botão
+    // O setTimeout agora serve APENAS para limpar o visual do botão depois de 1 segundo
+    setTimeout(() => {
+      contactForm.reset();
       btn.innerText = originalText;
       btn.style.boxShadow = "";
-    }, 800);
+    }, 1000);
   });
 }
