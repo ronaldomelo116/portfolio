@@ -44,7 +44,7 @@
   }
 
   .navbar a.active .nav-icon,
-  .navbar a:hover .nav-icon {
+  .navbar a:active .nav-icon {
     color: var(--neon-green);
     text-shadow: 0 0 15px var(--neon-green);
   }
