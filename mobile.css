@@ -6,7 +6,6 @@
 
 @media screen and (max-width: 768px) {
 
-  /* Header & Nav */
   .header {
     flex-direction: column;
     padding: 15px 20px;
@@ -22,6 +21,34 @@
     border-top: 1px solid var(--border-color);
   }
 
+  .navbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+  }
+
+  .nav-text {
+    display: none !important;
+  }
+
+  .nav-icon {
+    display: block !important;
+    font-size: 28px
+    color: var(--text-main);
+  }
+
+  .navbar a {
+    padding: 10px 15px;
+  }
+
+  .navbar a.active .nav-icon,
+  .navbar a:hover .nav-icon {
+    color: var(--neon-green);
+    text-shadow: 0 0 15px var(--neon-green);
+  }
+
   .navbar ul {
     flex-wrap: wrap;
     justify-content: center;
@@ -29,7 +56,7 @@
   }
 
   .navbar a {
-    font-size: 1rem;
+    font-size: 0.8rem;
     padding: 5px;
   }
 
@@ -51,7 +78,7 @@
   }
 
   .logo p {
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     color: var(--neon-green);
   }
 
