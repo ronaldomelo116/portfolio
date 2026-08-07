@@ -51,11 +51,32 @@ body.cyber-theme {
     animation: neon-text 5s ease-in-out infinite;
 }
 
+.nav-icon {
+    display: none !important; 
+}
+
+.nav-text {
+    display: inline-block; 
+}
+
+.material-symbols-outlined {
+    font-size: 28px; 
+    transition: 0.3s ease; 
+}
+.navbar {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 30px;
+      
+  }
+
 .navbar ul {
     list-style: none;
     display: flex;
     gap: 20px;
 }
+
 
 .navbar a {
     text-decoration: none;
@@ -66,10 +87,16 @@ body.cyber-theme {
         text-shadow 0.3s;
 }
 
+.material-symbols-outlined {
+      font-size: 28px;
+      transition: 0.3s ease;
+  }
+
 .navbar a:hover,
 .navbar a.active {
     color: var(--neon-green);
     text-shadow: 0 0 8px var(--neon-green);
+    animation: neon-text 2s ease-in-out infinite;
 }
 
 .hero {
@@ -352,11 +379,13 @@ h3 {
 }
 
 @keyframes passarSlide {
+
     0%,
     25% {
         opacity: 1;
         z-index: 2;
     }
+
     33.33%,
     100% {
         opacity: 0;
@@ -521,4 +550,23 @@ html {
 
 textarea {
     resize: none;
+}
+
+html,
+body.cyber-theme {
+    cursor: url('./img/point-mouse.png'), auto;
+}
+
+a,
+button,
+.project-card,
+.neon-btn {
+    cursor: url('./img/point-click.png'), pointer;
+}
+
+::-webkit-scrollbar,
+::-webkit-scrollbar-thumb,
+::-webkit-scrollbar-track {
+    cursor: url('./img/point-mouse.png'), auto;
+    /* O navegador ignora essa linha! */
 }
